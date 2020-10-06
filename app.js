@@ -33,7 +33,9 @@ function mainMenu() {
 
         })
     }
-    {
+
+    function nextTeamMember() {
+    inquirer.prompt([{
         type: "list",
         name: "memberChoice",
         message: "Which type of team member would you like to add?",
@@ -41,11 +43,24 @@ function mainMenu() {
             "Engineer",
             "Intern",
             "I don't want to add any more team members"
-        ]
-    }
-    createManager()
+       ] 
+    }])
+    .then(answer => {
+        console.log(answer.memberChoice);
+        if (answer.memberChoice === "Engineer") {
+            createEngineer();
+        }
+        if (answer.memberChoice === "Intern") {
+            createIntern();
+        }
+        if (answer.memberChoice === "I am done adding team members.") {
+            console.log("Creating your list.");
+            console.log(idArray);
+            console.log(teamMembers);
+        }
+    })
 }
-
+createManager()
 mainMenu()
 
 // Write code to use inquirer to gather information about the development team members,
