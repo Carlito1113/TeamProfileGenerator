@@ -14,9 +14,6 @@ const teamMembers = [];
 const idArray = [];
 
 
-
-
-
 function nextTeamMember() {
     inquirer.prompt([{
         type: "list",
@@ -43,34 +40,70 @@ function nextTeamMember() {
         }
     })
     
+
 function createManager() {
     console.log("Please Build your Team")
     inquirer.prompt([
-        {  
-        type: "input",
-        name: "managerName",
-        message: "What is your managers name?",
-        validate: answer => {
-            if(answer !== "") {
+        {
+            type: "input",
+            name: "managerName",
+            message: "What is your managers name?",
+            validate: answer => {
+            if (answer !== "") {
                 return true;
-            }
+                }
             return "Please enter a name"
+            }
         },
         {
-        type:,
-        name:,
-        message:,
-        
-        }
+            type: "input",
+            name: "managerId",
+            message: "What is the manager's id?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter a valid name";
+            }
+        },
+        {
+            type: "input",
+            name: "managerEmail",
+            message: "What is the manager's email?",
+            validate: answer => {
+                if (answer != "") {
+                    return true;
+                }
+                return "Enter a valid email";
+            }
+        },
+        {
+            type: "input",
+            name: "managerOffice",
+            message: "What is the manager's office?",
+            validate: answer => {
+                if (parseInt(answer) >= 0)  {
+                    return true;
+                }
+                return "Enter a valid email";
+            }
+        },
 
-    }]).then(answer =>{
+    }]).then(answers => {
         const manager = new Manager(answers.id)
         teamMembers.push(manager)
-        idArray.push(answers.managerId)
+        idArray.push(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOffice);
+        teamMembers.push(manager);
+        idArray.push(answers.managerId);
+        createTeam();
 
-    })
-}
+    })}
+        
 
+
+
+
+    
 function mainMenu() {
     createManager();
 }
