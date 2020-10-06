@@ -33,7 +33,7 @@ function createManager() {
         name: "managerId",
         message: "What is the manager's id?",
         validate: (answer) => {
-          if (answer !== "") {
+          if (parseInt(answer) >= 0) {
             return true;
           }
           return "Enter a valid id.";
@@ -118,7 +118,7 @@ function createEngineer() {
       name: "engineerId",
       message: "What is your engineer's id?",
       validate: (answer) => {
-        if (answer !== "") {
+        if (parseInt(answer) >= 0) {
           return true;
         }
         return "Enter a valid id.";
@@ -140,7 +140,7 @@ function createEngineer() {
       name: "engineerGitHub",
       message: "What is your engineer's GitHub?",
       validate: (answer) => {
-        if (parseInt(answer) >= 0) {
+        if (answer !== "") {
           return true;
         }
         return "Enter a valid GitHub account.";
@@ -173,7 +173,7 @@ function createIntern() {
       name: "internId",
       message: "What is your interns's id?",
       validate: (answer) => {
-        if (answer !== "") {
+        if (parseInt(answer) >= 0) {
           return true;
         }
         return "Enter a valid id.";
@@ -195,7 +195,7 @@ function createIntern() {
       name: "internSchool",
       message: "What school did your intern attend?",
       validate: (answer) => {
-        if (parseInt(answer) >= 0) {
+        if (answer !== "") {
           return true;
         }
         return "Enter a valid university";
