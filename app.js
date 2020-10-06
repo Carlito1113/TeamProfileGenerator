@@ -36,7 +36,7 @@ function createManager() {
                 if (answer !== "") {
                     return true;
                 }
-                return "Please enter a valid name";
+                return "Enter a valid id.";
             }
         },
         {
@@ -53,12 +53,12 @@ function createManager() {
         {
             type: "input",
             name: "managerOffice",
-            message: "What is the manager's office?",
+            message: "What is the manager's office number?",
             validate: answer => {
                 if (parseInt(answer) >= 0)  {
                     return true;
                 }
-                return "Enter a valid email";
+                return "Enter a valid office number.";
             }
         },
 
@@ -100,20 +100,66 @@ function createTeam() {
                 console.log("Creating your team.");
             })
         }
-    })}
+    })
+}
     
 function createEngineer() {
-    inquirer.prompt ([
+    inquirer.prompt([
         {
             type: "input",
             name: "engineerName",
-            message: "What is your engineer's name?"
+            message: "What is your engineer's name?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                    }
+                return "Please enter a name"
+                }
+        },
+        {
+            type: "input",
+            name: "engineerId",
+            message: "What is your engineer's id?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Enter a valid id.";
+            }
+        },
+        {
+            type: "input",
+            name: "engineerEmail",
+            message: "What is the engineer's email?",
+            validate: answer => {
+                if (answer != "") {
+                    return true;
+                }
+                return "Enter a valid email";
+            }
+        },
+        {
+            type: "input",
+            name: "engineerGitHub",
+            message: "What is your engineer's GitHub?",
+            validate: answer => {
+                if (parseInt(answer) >= 0)  {
+                    return true;
+                }
+                return "Enter a valid GitHub account.";
+            }
         },
     ])
 }
 
 function createIntern() {
-    inquirer.prompt
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "internName",
+            message: "What is your intern's name?"
+        },
+    ])
 }
 
 function mainMenu() {
