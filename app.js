@@ -13,28 +13,11 @@ const render = require("./lib/htmlRenderer");
 const teamMembers = [];
 const idArray = [];
 
-function mainMenu() {
-    function createManager() {
-        console.log("Please Build your Team")
-        inquirer.prompt([{
-            type: "input",
-            name: "managerName",
-            message: "What is your managers name?",
-            validate: answer => {
-                if(answer !== "") {
-                    return true;
-                }
-                return "Please enter a name"
-            }
-        }]).then(answer =>{
-            const manager = new Manager(answers.id)
-            teamMembers.push(manager)
-            idArray.push(answers.managerId)
 
-        })
-    }
 
-    function nextTeamMember() {
+
+
+function nextTeamMember() {
     inquirer.prompt([{
         type: "list",
         name: "memberChoice",
@@ -59,8 +42,39 @@ function mainMenu() {
             console.log(teamMembers);
         }
     })
+    
+function createManager() {
+    console.log("Please Build your Team")
+    inquirer.prompt([
+        {  
+        type: "input",
+        name: "managerName",
+        message: "What is your managers name?",
+        validate: answer => {
+            if(answer !== "") {
+                return true;
+            }
+            return "Please enter a name"
+        },
+        {
+        type:,
+        name:,
+        message:,
+        
+        }
+
+    }]).then(answer =>{
+        const manager = new Manager(answers.id)
+        teamMembers.push(manager)
+        idArray.push(answers.managerId)
+
+    })
 }
-createManager()
+
+function mainMenu() {
+    createManager();
+}
+
 mainMenu()
 
 // Write code to use inquirer to gather information about the development team members,
