@@ -74,10 +74,10 @@ function createManager() {
 
 
 
-function nextTeamMember() {
+function createTeam() {
     inquirer.prompt([{
         type: "list",
-        name: "memberChoice",
+        name: "teamMember",
         message: "Which type of team member would you like to add?",
         choices: [
             "Engineer",
@@ -85,18 +85,20 @@ function nextTeamMember() {
             "I don't want to add any more team members"
        ] 
     }])
-    .then(answer => {
-        console.log(answer.memberChoice);
-        if (answer.memberChoice === "Engineer") {
+    .then(answers => {
+        console.log(answers.teamMember);
+        if (answer.teamMember === "Engineer") {
             createEngineer();
         }
-        if (answer.memberChoice === "Intern") {
+        else if (answers.teamMember === "Intern") {
             createIntern();
         }
-        if (answer.memberChoice === "I am done adding team members.") {
-            console.log("Creating your list.");
-            console.log(idArray);
-            console.log(teamMembers);
+        else {
+            const renderHtml = render(teamMembers);
+            fs.writeFile(outputPath, renderHtml, function (err) {
+                if (err) throw err;
+                console.log("Creating your team.");
+            })
         }
     })}
     
