@@ -157,7 +157,46 @@ function createIntern() {
         {
             type: "input",
             name: "internName",
-            message: "What is your intern's name?"
+            message: "What is your intern's name?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                    }
+                return "Please enter a name"
+                }
+        },
+        {
+            type: "input",
+            name: "internId",
+            message: "What is your interns's id?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Enter a valid id.";
+            }
+        },
+        {
+            type: "input",
+            name: "internEmail",
+            message: "What is the intern's email?",
+            validate: answer => {
+                if (answer != "") {
+                    return true;
+                }
+                return "Enter a valid email";
+            }
+        },
+        {
+            type: "input",
+            name: "internSchool",
+            message: "What school did your intern attend?",
+            validate: answer => {
+                if (parseInt(answer) >= 0)  {
+                    return true;
+                }
+                return "Enter a valid university";
+            }
         },
     ])
 }
