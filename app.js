@@ -112,6 +112,10 @@ function createEngineer() {
     ])
 }
 
+function createIntern() {
+    inquirer.prompt
+}
+
 function mainMenu() {
     createManager();
 }
