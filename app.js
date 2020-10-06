@@ -63,14 +63,7 @@ function createManager() {
       },
     ])
     .then((answers) => {
-      const manager = new Manager(answers.id);
-      teamMembers.push(manager);
-      idArray.push(
-        answers.managerName,
-        answers.managerId,
-        answers.managerEmail,
-        answers.managerOffice
-      );
+      const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOffice);
       teamMembers.push(manager);
       idArray.push(answers.managerId);
       createTeam();
@@ -93,7 +86,7 @@ function createTeam() {
     ])
     .then((answers) => {
       console.log(answers.teamMember);
-      if (answer.teamMember === "Engineer") {
+      if (answers.teamMember === "Engineer") {
         createEngineer();
       } else if (answers.teamMember === "Intern") {
         createIntern();
@@ -153,7 +146,13 @@ function createEngineer() {
         return "Enter a valid GitHub account.";
       },
     },
-  ]);
+  ])
+  .then((answers) => {
+    const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub);
+    teamMembers.push(engineer);
+    idArray.push(answers.engineerId);
+    createTeam();
+  });
 }
 
 function createIntern() {
@@ -202,7 +201,13 @@ function createIntern() {
         return "Enter a valid university";
       },
     },
-  ]);
+  ])
+  .then((answers) => {
+    const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+    teamMembers.push(intern);
+    idArray.push(answers.internId);
+    createTeam();
+  });
 }
 
 function mainMenu() {
