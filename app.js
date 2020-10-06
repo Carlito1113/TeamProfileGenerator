@@ -148,7 +148,7 @@ function createEngineer() {
     },
   ])
   .then((answers) => {
-    const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub);
+    const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithHub);
     teamMembers.push(engineer);
     idArray.push(answers.engineerId);
     createTeam();
