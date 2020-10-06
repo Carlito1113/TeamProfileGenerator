@@ -102,7 +102,15 @@ function createTeam() {
         }
     })}
     
-
+function createEngineer() {
+    inquirer.prompt ([
+        {
+            type: "input",
+            name: "engineerName",
+            message: "What is your engineer's name?"
+        },
+    ])
+}
 
 function mainMenu() {
     createManager();
