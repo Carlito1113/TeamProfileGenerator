@@ -14,33 +14,6 @@ const teamMembers = [];
 const idArray = [];
 
 
-function nextTeamMember() {
-    inquirer.prompt([{
-        type: "list",
-        name: "memberChoice",
-        message: "Which type of team member would you like to add?",
-        choices: [
-            "Engineer",
-            "Intern",
-            "I don't want to add any more team members"
-       ] 
-    }])
-    .then(answer => {
-        console.log(answer.memberChoice);
-        if (answer.memberChoice === "Engineer") {
-            createEngineer();
-        }
-        if (answer.memberChoice === "Intern") {
-            createIntern();
-        }
-        if (answer.memberChoice === "I am done adding team members.") {
-            console.log("Creating your list.");
-            console.log(idArray);
-            console.log(teamMembers);
-        }
-    })
-    
-
 function createManager() {
     console.log("Please Build your Team")
     inquirer.prompt([
@@ -89,21 +62,46 @@ function createManager() {
             }
         },
 
-    }]).then(answers => {
+
+    ]).then(answers => {
         const manager = new Manager(answers.id)
         teamMembers.push(manager)
         idArray.push(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOffice);
         teamMembers.push(manager);
         idArray.push(answers.managerId);
         createTeam();
-
     })}
-        
 
 
 
-
+function nextTeamMember() {
+    inquirer.prompt([{
+        type: "list",
+        name: "memberChoice",
+        message: "Which type of team member would you like to add?",
+        choices: [
+            "Engineer",
+            "Intern",
+            "I don't want to add any more team members"
+       ] 
+    }])
+    .then(answer => {
+        console.log(answer.memberChoice);
+        if (answer.memberChoice === "Engineer") {
+            createEngineer();
+        }
+        if (answer.memberChoice === "Intern") {
+            createIntern();
+        }
+        if (answer.memberChoice === "I am done adding team members.") {
+            console.log("Creating your list.");
+            console.log(idArray);
+            console.log(teamMembers);
+        }
+    })}
     
+
+
 function mainMenu() {
     createManager();
 }
